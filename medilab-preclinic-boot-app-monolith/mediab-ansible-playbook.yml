@@ -1,0 +1,11 @@
+...
+   -hosts: all
+    tasks:
+      - name: stop the container
+        shell: docker stop medillab-web-app
+      - name: remove the container
+        shell: docker rm medillab-web-app 
+      - name: remove the tag image
+        shell: docker rmi -f preclinic-img:latest 
+      - name: run the container
+        shell:  docker run -t --name=medilab-web-app -p 8087:8087  vsjit/preclinic-img:latest
